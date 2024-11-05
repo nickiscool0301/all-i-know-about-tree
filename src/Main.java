@@ -1,7 +1,7 @@
-import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Stack;
+import java.util.Map;
 
 /*
 Summary of iterative
@@ -48,6 +48,10 @@ public class Main {
     //ZigZag
     System.out.println("\n");
     test_Binary_Tree_ZigZag();
+
+    //Shortest path graph
+    System.out.println("\n");
+    test_findShortestPath_Graph();
   }
 
   public static void test_Binary_Tree_ZigZag() {
@@ -59,5 +63,15 @@ public class Main {
     root.right.right = new TreeNode(7);
     List<List<Integer>> res = binaryZigZagTraversal.zigzagLevelOrder(root);
     res.stream().forEach(i-> System.out.print(i + ","));
+   }
+
+   public static void test_findShortestPath_Graph() {
+    Map<Integer, List<Integer>> graph = new HashMap<>();
+    graph.put(1, Arrays.asList(2,3));
+    graph.put(2, Arrays.asList(1,4));
+    graph.put(3, Arrays.asList(1,4));
+    graph.put(4, Arrays.asList(2,3,5));
+    graph.put(5, List.of(4));
+     System.out.println("Shortest path: " + new Graph().findShortestPath(graph,1,5));
    }
 }
