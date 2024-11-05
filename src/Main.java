@@ -44,5 +44,20 @@ public class Main {
     System.out.println("BFS");
     BFS bfs = new BFS();
     bfs.iterative_bfs(root).forEach(i -> System.out.print(i + "->"));
+
+    //ZigZag
+    System.out.println("\n");
+    test_Binary_Tree_ZigZag();
   }
+
+  public static void test_Binary_Tree_ZigZag() {
+    Binary_ZigZag_Traversal binaryZigZagTraversal = new Binary_ZigZag_Traversal();
+    TreeNode root = new TreeNode(3);
+    root.left = new TreeNode(9);
+    root.right = new TreeNode(20);
+    root.right.left = new TreeNode(15);
+    root.right.right = new TreeNode(7);
+    List<List<Integer>> res = binaryZigZagTraversal.zigzagLevelOrder(root);
+    res.stream().forEach(i-> System.out.print(i + ","));
+   }
 }
