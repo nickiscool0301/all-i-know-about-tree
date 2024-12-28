@@ -1,4 +1,6 @@
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -21,4 +23,32 @@ public class BFS {
     }
     return res;
   }
-}
+
+  // Apply BFS but for each level, only add the largest value
+  public List<Integer> largestValues(TreeNode root) {
+    Deque<TreeNode> dq = new ArrayDeque<>();
+    List<Integer> res = new ArrayList<>();
+    if(root == null) return res;
+    dq.addLast(root);
+
+    while(!dq.isEmpty()) {
+      int size = dq.size();
+      int max = Integer.MIN_VALUE;
+
+      while(size-- > 0) {
+
+        TreeNode curr = dq.poll();
+        max = Math.max(max, curr.val);
+
+        if(curr.left != null) {
+          dq.addLast(curr.left);
+        }
+
+        if(curr.right != null) {
+          dq.addLast(curr.right);
+        }
+      }
+      res.add(max);
+    }
+    return res;
+  }}

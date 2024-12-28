@@ -1,6 +1,8 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Stack;
 
 public class DFS {
@@ -96,5 +98,18 @@ public class DFS {
       }
     }
     return res;
+  }
+
+  public List<Integer> largestValues(TreeNode root) {
+    Map<Integer, Integer> hm = new HashMap<>();
+    dfs(root, hm, 0);
+    return new ArrayList<>(hm.values());
+  }
+
+  private void dfs(TreeNode root, Map<Integer, Integer> hm, int level) {
+    if(root == null) return;
+    hm.put(level, Math.max(root.val, hm.getOrDefault(level, Integer.MIN_VALUE)));
+    dfs(root.left, hm, level + 1);
+    dfs(root.right, hm, level + 1);
   }
 }

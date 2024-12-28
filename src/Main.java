@@ -52,6 +52,26 @@ public class Main {
     //Shortest path graph
     System.out.println("\n");
     test_findShortestPath_Graph();
+
+    //EH
+    List<String[]> input = Arrays.asList(
+      new String[]{"A", "B"},
+      new String[]{"C", "B"},
+      new String[]{"B", "D"},
+      new String[]{"E", "D"},
+      new String[]{"D", "F"}
+    );
+    System.out.println("\nEH Build using TreeNode\n\n");
+    EH eh = new EH();
+    eh.solve(input);
+
+    System.out.println("\nEH Build using Normal Array\n\n");
+    eh.solve2(input);
+
+
+
+    //Test TreeMap
+    new TreeMapLearn().testTreeMapFeature();
   }
 
   public static void test_Binary_Tree_ZigZag() {
